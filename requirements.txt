@@ -3,3 +3,7 @@ uvicorn
 motor
 python-dotenv
 pydantic
+pandas
+matplotlib
+seaborn
+Pillow
