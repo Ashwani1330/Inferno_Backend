@@ -39,7 +39,52 @@
                 <div class="metric-label">Completion Rate</div>
             </div>
         </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h3><i class="fas fa-chart-bar"></i> Performance Score Distribution</h3>
+                    {% if plots.performance_distribution and plots.performance_distribution.base64 %}
+                        <img src="{{ plots.performance_distribution.base64 }}" class="responsive-chart" alt="Performance Distribution">
+                    {% else %}
+                        <p class="no-data">Not enough data to show score distribution.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h3><i class="fas fa-users"></i> Performance by Age Group</h3>
+                    {% if plots.performance_by_age and plots.performance_by_age.base64 %}
+                        <img src="{{ plots.performance_by_age.base64 }}" class="responsive-chart" alt="Performance by Age">
+                    {% else %}
+                        <p class="no-data">Not enough data to show performance by age.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="chart-container">
+                    <h3><i class="fas fa-level-up-alt"></i> Performance by Difficulty</h3>
+                    {% if plots.performance_by_difficulty and plots.performance_by_difficulty.base64 %}
+                        <img src="{{ plots.performance_by_difficulty.base64 }}" class="responsive-chart" alt="Performance by Difficulty">
+                    {% else %}
+                        <p class="no-data">Not enough data to show performance by difficulty.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
         <p class="text-muted text-end">Last updated: {{ stats.get('last_updated', 'N/A') }}</p>
     </div>
+
+    <style>
+        .chart-container { background-color: white; border-radius: 8px; padding: 20px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .chart-container h3 { margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .responsive-chart { width: 100%; height: auto; }
+        .no-data { text-align: center; color: #6c757d; padding: 30px; }
+    </style>
 </body>
 </html>
